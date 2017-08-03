@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="
+https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </head>
+    <body>
+        <header>
+            <div id="github-credentials">
+                <h1>Please enter your Github credentials</h1>
+                <input type="text" name="username" placeholder="username" value="">
+                <input type="password" name="password" placeholder="password">
+                <button id="github-credentials-save" type="button">GO</button>
+            </div>
+            <div id="github-query-name">
+                <h1>Query Github username</h1>
+                <input type="text" name="name" placeholder="username">
+                <button id="github-query-name-submit" type="button">GO</button>
+            </div>
+        </header>
+
+        <main>
+
+        </main>
+
+        <template id="repo">
+            {{#each repo}}
+            <div class="repo {{full_name}}">
+                <img class="{{full_name}}" src="{{owner/avatar_url}}" alt="{{owner/login}}">
+                <h3 class="{{full_name}}">{{full_name}}</h3>
+
+
+                <div class="commits"></div>
+            </div>
+            {{/each}}
+        </template>
+
+
+
+        <template id="commits">
+            <ul>
+            {{#commits}}
+                <li>
+                <!-- commit title -->
+                    <div class="">
+                        <h4>{{commit/message}}</h4>
+                    </div>
+                    <!-- commit metadata -->
+                    <div class="">
+                        <p>{{author/login}} committed on {{commit/author/date}}</p>
+                    </div>
+                </li>
+            {{/commits}}
+            </ul>
+        </template>
+    </body>
+</html>
